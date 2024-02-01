@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Set variables
-BUCKET_NAME="xxxx"
+BUCKET_NAME="xxxxx"
 STACK_NAME="render-reviver-stack"
 FUNCTION_NAME="render-reviver"
 ZIP_FILE="RenderReviver.zip"
@@ -13,7 +12,9 @@ pipenv lock --requirements > requirements.txt
 # Install dependencies into the package directory
 pipenv run pip install -r requirements.txt --target ./package
 
-# Zip your package directory that contains your function and dependencies
+cp app.py request_manager.py ./package
+
+# Zip package directory containing function and dependencies
 cd package
 zip -r ../$ZIP_FILE .
 cd ..
